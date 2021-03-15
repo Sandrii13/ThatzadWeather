@@ -19,7 +19,7 @@
 <body>
 <div class="container-fluid bg">
 
-    <div class="row justify-content-center p-5">
+    <div class="row justify-content-center pt-5">
         <div class="col-12 text-center">
             <img class="logo" src="../img/Bitmap.png" alt="logo">
         </div>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center pt-5">
+    <div class="row justify-content-center">
         <div class="col-12 col-md-2 text-center">
             <p class="txt2 mt-5">¡Que la lluvia no te pare!</p>
         </div>

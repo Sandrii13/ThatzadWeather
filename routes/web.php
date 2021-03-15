@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('detalle');
+    return view('principal');
 });
+
+Route::get('/weather', function (){
+    return view('detalles');
+})->name('detalles');
