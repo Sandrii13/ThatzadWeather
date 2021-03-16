@@ -44,6 +44,7 @@ class PrincipalController extends Controller
     public function show(){
         $top = DB::table('ciudades')
                     ->select('cp', 'ciudad', 'temperatura')
+                    ->orderBy('cp')
                     ->get();
         return view('detalle')->with('top', $top);
     }
