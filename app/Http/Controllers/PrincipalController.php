@@ -18,21 +18,21 @@ class PrincipalController extends Controller
 
         $existe = DB::table('ciudades')
                     ->select('cp')
-                    ->get();;
+                    ->get();
         $ciudad = $request['ciudad'];
         $grado = $request['grado'];
         $cp = $request['cp'];
 
-        if($existe == ""){
-            DB::table('ciudades')->insert([
-                'cp' => $cp,
+        if($existe == $cp){
+            DB::table('ciudades')
+            ->where('cp', $cp)
+            ->update([
                 'ciudad' => $ciudad,
                 'temperatura' => $grado
             ]);
         }else{
-            DB::table('ciudades')
-            ->where('cp', $cp)
-            ->update([
+            DB::table('ciudades')->insert([
+                'cp' => $cp,
                 'ciudad' => $ciudad,
                 'temperatura' => $grado
             ]);
@@ -44,7 +44,7 @@ class PrincipalController extends Controller
     public function show(){
         $top = DB::table('ciudades')
                     ->select('cp', 'ciudad', 'temperatura')
-                    ->get();;
+                    ->get();
         return view('detalle')->with('top', $top);
     }
 
