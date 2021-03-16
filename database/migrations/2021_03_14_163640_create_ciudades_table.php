@@ -18,7 +18,6 @@ class CreateCiudadesTable extends Migration
             $table->integer('cp');
             $table->string('ciudad');
             $table->tinyInteger('temperatura');
-            $table->timestamps();
         });
     }
 

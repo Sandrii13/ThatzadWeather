@@ -21,5 +21,6 @@ Route::get('/weather', function (){
     return view('detalle');
 })->name('detalles');
 
-Route::post('/ajax', [App\Http\Controllers\PrincipalController::class, 'index'])->name('ajax');
-Route::post('/ajax1', [App\Http\Controllers\PrincipalController::class, 'buscar'])->name('buscar');
+//Route::post('/ajax', [App\Http\Controllers\PrincipalController::class, 'index'])->name('ajax');
+Route::get('/get', [App\Http\Controllers\PrincipalController::class, 'top'])->name('get');
+Route::match(array('GET','POST'),'/ajax', [App\Http\Controllers\PrincipalController::class, 'index'])->name('ajax');

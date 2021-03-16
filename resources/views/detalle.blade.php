@@ -18,16 +18,18 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        var $ncp = "{{$cp}}";
+        var ncp = "{{$cp}}";
         function tiempo($code){
             $.ajax({
                 url: "http://api.openweathermap.org/data/2.5/forecast?q="+$code+",es&appid=a055be268d02630cdc77d26a344e67d5",
                 success: function(result) {
                     console.log(result);
                     //Temperatura principal
+                    //ciudad
                     ciudad = result.city.name;
                     nowlogo = result.list[0].weather[0].icon;
                     estado = result.list[0].weather[0].main;
+                    //temperatura
                     grado = Math.round((result.list[0].main.temp - 273));
                     //Temperatura siguiente hora 1
                     hora = result.list[1].dt_txt;
@@ -57,7 +59,6 @@
                     ndia = new Date(diaFinal);
                     semana = ndia.getDay();
                     diaNom = week[semana];
-                    console.log(diaNom);
                     //Dia de la semana 2
                     dia1 = result.list[8].dt_txt;
                     diaFinal1 = dia1.substr(-19, 10);
@@ -94,6 +95,8 @@
                     dnowlogo4 = result.list[29].weather[0].icon;
                     destado4 = result.list[29].weather[0].main;
                     dgrado4 = Math.round((result.list[29].main.temp - 273));
+
+                    topCiudad(ciudad, grado, ncp);
                     //Principal
                     $("#nCiudad").html(ciudad);
                     $("#nowLogo").html('<img class="plogo" src="http://openweathermap.org/img/wn/'+nowlogo+'@2x.png" alt="' + nowlogo + '">');
@@ -126,8 +129,8 @@
                     //Dia 2
                     $("#dia2").html(diaNom1);
                     $("#dlogo2").html('<img class="plogo" src="http://openweathermap.org/img/wn/'+dnowlogo1+'.png" alt="' + dnowlogo1 + '">');
-                    $("#destado2").html(destado1);
-                    $("#dgrado2").html(dgrado1);
+                    $("#destado2").html(estado1);
+                    $("#dgrado2").html(grado1);
                     //Dia 3
                     $("#dia3").html(diaNom2);
                     $("#dlogo3").html('<img class="plogo" src="http://openweathermap.org/img/wn/'+dnowlogo2+'.png" alt="' + dnowlogo2 + '">');
@@ -144,12 +147,32 @@
                     $("#destado5").html(destado4);
                     $("#dgrado5").html(dgrado4);
                 }
+
             });
         };
 
+        function topCiudad($ciudad, $grado, $ncp){
+            console.log($ciudad, $grado, $ncp);
+            var fciudad = $ciudad;
+            var fgrado = $grado;
+            var fcp = $ncp;
+            var data ={
+                'ciudad': fciudad,
+                'grado': fgrado,
+                'cp': fcp
+            }
+            $.ajax({
+                    url: "{{ route('get') }}",
+                    type: "GET",
+			        data: data,
+			        success:function(resp){
+				        console.log(resp);
+			        }
+		    })
+        };
         function enviarform(){
             document.getElementById('search').addEventListener('keydown', inputCharacters);
-        }
+        };
         function inputCharacters(event) {
             console.log(event);
             if (event.key === 13) {
@@ -162,8 +185,8 @@
 			        }
 		        })
             }
-        }
-        tiempo($ncp);
+        };
+        tiempo(ncp);
     </script>
 </head>
 
