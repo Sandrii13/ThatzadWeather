@@ -9,11 +9,14 @@
 
     <title>ThatzadWeather</title>
     <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
+
      <!-- Styles -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
+
+
 </head>
 
 <body>
@@ -33,14 +36,17 @@
 
     <div class="row justify-content-center pt-4">
         <div class="col-12 col-md-4 text-center">
-            <input type="text" id="cp" class="form-control p-4" placeholder="Introduce el código postal">
+            <form method="post" action="{{route('ajax')}}" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+            <input type="text" id="cp" name='cp' class="form-control p-4" placeholder="Introduce el código postal">
         </div>
     </div>
 
     <div class="row justify-content-center pt-3">
         <div class="col-12 col-md-4 text-center">
-            <label class="btn btn-primary" for="btn-check">Buscar <img class="float-right float-md-right" src="../img/search-location.png" alt="search"> </label>
+            <input type="submit" value="Buscar" type="submit" id="btn" class="btn btn-primary" for="btn-check">
         </div>
+            </form>
     </div>
 
     <div class="row justify-content-center">

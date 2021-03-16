@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/weather', function (){
-    return view('detalles');
+    return view('detalle');
 })->name('detalles');
+
+Route::post('/ajax', [App\Http\Controllers\PrincipalController::class, 'index'])->name('ajax');
+Route::post('/ajax1', [App\Http\Controllers\PrincipalController::class, 'buscar'])->name('buscar');
