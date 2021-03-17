@@ -9,7 +9,6 @@
 
     <title>ThatzadWeather</title>
     <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
      <!-- Styles -->
 
     <link href="css/bootstrap.min.css" rel="stylesheet">

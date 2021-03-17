@@ -14,7 +14,9 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2"
+        "laravel/ui": "^3.2",
+        "statickidz/php-google-translate-free": "^1.1",
+        "stichoza/google-translate-php": "^4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
