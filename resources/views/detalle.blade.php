@@ -22,7 +22,6 @@
             $.ajax({
                 url: "http://api.openweathermap.org/data/2.5/forecast?q="+$code+",es&appid=a055be268d02630cdc77d26a344e67d5",
                 success: function(result) {
-                    console.log(result);
                     //Temperatura principal
                     //ciudad
                     ciudad = result.city.name;
