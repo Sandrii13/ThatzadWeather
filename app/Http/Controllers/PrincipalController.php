@@ -16,25 +16,27 @@ class PrincipalController extends Controller
     public function top(Request $request){
 
         $existe = DB::table('ciudades')
-                    ->select('cp')
+                    ->select('ciudad')
                     ->get();
         $ciudad = $request['ciudad'];
         $grado = $request['grado'];
         $cp = $request['cp'];
 
-        if($existe == $cp){
-            DB::table('ciudades')
-            ->where('cp', $cp)
-            ->update([
-                'ciudad' => $ciudad,
-                'temperatura' => $grado
-            ]);
-        }else{
-            DB::table('ciudades')->insert([
-                'cp' => $cp,
-                'ciudad' => $ciudad,
-                'temperatura' => $grado
-            ]);
+        foreach($existe as $exist){
+            if($exist->ciudad == $ciudad){
+                DB::table('ciudades')
+                ->where('ciudad', $ciudad)
+                ->update([
+                    'ciudad' => $ciudad,
+                    'temperatura' => $grado
+                ]);
+            }else{
+                DB::table('ciudades')->insert([
+                    'cp' => $cp,
+                    'ciudad' => $ciudad,
+                    'temperatura' => $grado
+                ]);
+            }
         }
 
         return view('detalle');
