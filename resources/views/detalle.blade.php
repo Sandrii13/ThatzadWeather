@@ -172,7 +172,6 @@
             $.ajax({
                     url: "{{ route('show') }}",
 			        success:function(resp){
-                        console.log(resp);
 				        //top 1
                         temp = resp[0].temperatura;
                         code = resp[0].cp;
@@ -208,6 +207,7 @@
                         $("#topGrado5").html(temp);
                         $("#code5").html(code);
                         $("#ciu5").html(ciu);
+
 			        }
 		    })
         }
@@ -236,17 +236,19 @@
 <body>
 <div class="container-fluid bg">
 
-    <div class="row justify-content-center p-5">
+    <div class="row justify-content-center pt-5">
         <div class="col-12 text-center">
             <img class="logo" src="../img/Bitmap.png" alt="logo">
         </div>
+    </div>
+    <div class="row justify-content-center pb-5 ">
         <div class="col-4 col-md-4 pr-2"><p class="txtDet float-right float-md-right">¡Que la lluvia no te pare!</p></div>
     </div>
 
     <div class="row justify-content-center pb-5">
 
         <div class="col col-7 col-md-7 mr-3 fondo">
-            <div class="row justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center pb-5">
                 <div class="col-4 col-md-4 pt-5 offset-2">
                     <p class="ciudad m-0">Código postal: <strong>{{$cp}}</strong></p>
                     <p class="ciudad m-0">Ciudad: <strong id="nCiudad"></strong></p>
@@ -269,7 +271,6 @@
                                 <p id="estado" class="nombre m-0"></p>
                                 <p id="grado" class="bgGrado m-0"></p>
                         </div>
-
                     </div>
                 </div>
                 <div class="row vertical float-right p-0 ml-4"></div>
@@ -306,38 +307,36 @@
                 </div>
                 <div class="row vertical float-right p-0"></div>
                 <div class="col-5 text-center">Próximos 5 días
-                    <div  id="myCarousel" class="carousel slide mt-4" data-ride="carousel">
-
-                        <div class="row pt-4 all justify-content-center carousel-inner">
-                            <div class="col-2 col-md-2 p-1 item">
+                        <div class="row mt-4 ml-0 all justify-content-center carousel topc">
+                            <div class="col-2 col-md-2 p-1">
                                 <p id="dia1" class="mb-0"></p>
                                 <div id="dlogo1"></div>
                                 <p id="destado1"></p>
                                 <p><strong id="dgrado1"></strong></p>
                             </div>
                             <div class="row vertical2 float-right p-0 mr-1 ml-1"></div>
-                            <div class="col-2 col-md-2 p-1 item">
+                            <div class="col-2 col-md-2 p-1">
                                 <p id="dia2" class="mb-0"></p>
                                 <div id="dlogo2"></div>
                                 <p id="destado2"></p>
                                 <p><strong id="dgrado2"></strong></p>
                             </div>
                             <div class="row vertical2 float-right p-0 mr-1 ml-1"></div>
-                            <div class="col-2 col-md-2 p-1 item">
+                            <div class="col-2 col-md-2 p-1">
                                 <p id="dia3" class="mb-0"></p>
                                 <div id="dlogo3"></div>
                                 <p id="destado3"></p>
                                 <p><strong id="dgrado3"></strong></p>
                             </div>
                             <div class="row vertical2 float-right p-0 mr-1 ml-1"></div>
-                            <div class="col-2 col-md-2 p-1 v">
+                            <div class="col-2 col-md-2 p-1">
                                 <p id="dia4" class="mb-0"></p>
                                 <div id="dlogo4"></div>
                                 <p id="destado4"></p>
                                 <p><strong id="dgrado4"></strong></p>
                             </div>
                             <div class="row vertical2 float-right p-0 mr-1 ml-1"></div>
-                            <div class="col-2 col-md-2 p-1 item">
+                            <div class="col-2 col-md-2 p-1">
                                 <p id="dia5" class="mb-0"></p>
                                 <div id="dlogo5"></div>
                                 <p id="destado5"></p>
@@ -345,12 +344,6 @@
                             </div>
 
                         </div>
-
-                          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span class="fa fa-angle-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                          </a>
-                    </div>
                 </div>
             </div>
         </div>

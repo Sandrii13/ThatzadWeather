@@ -55,7 +55,7 @@ body, html {
 /*Página detalles*/
 .txtDet{
     color: #ffffff;
-    font-size: 3vh;
+    font-size: 1.5vw;
 }
 .fondo{
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -126,11 +126,15 @@ body, html {
 }
 
 .carousel{
-    max-width: 23vw;
-    height: 19vh;
-    background-color: #306c77;
-    opacity: 0.5;
+    max-width: 25vw;
+    max-height: 18.5vh;
+    background-color: #306c7767;
 }
 .plogo{
     max-width: 100%;
+}
+.topc p{
+    font-size: 0.8vw;
+    font-weight: lighter;
+    color: #ffffff;
 }
