@@ -69,32 +69,32 @@
                     destado1 = result.list[8].weather[0].main;
                     dgrado1 = Math.round((result.list[8].main.temp - 273));
                     //Dia de la semana 3
-                    dia2 = result.list[12].dt_txt;
+                    dia2 = result.list[16].dt_txt;
                     diaFinal2 = dia2.substr(-19, 10);
                     ndia2 = new Date(diaFinal2);
                     semana2 = ndia2.getDay();
                     diaNom2 = week[semana2];
-                    dnowlogo2 = result.list[12].weather[0].icon;
-                    destado2 = result.list[12].weather[0].main;
-                    dgrado2 = Math.round((result.list[12].main.temp - 273));
+                    dnowlogo2 = result.list[16].weather[0].icon;
+                    destado2 = result.list[16].weather[0].main;
+                    dgrado2 = Math.round((result.list[16].main.temp - 273));
                     //Dia de la semana 4
-                    dia3 = result.list[20].dt_txt;
+                    dia3 = result.list[24].dt_txt;
                     diaFinal3 = dia3.substr(-19, 10);
                     ndia3 = new Date(diaFinal3);
                     semana3 = ndia3.getDay();
                     diaNom3 = week[semana3];
-                    dnowlogo3 = result.list[20].weather[0].icon;
-                    destado3 = result.list[20].weather[0].main;
-                    dgrado3 = Math.round((result.list[20].main.temp - 273));
+                    dnowlogo3 = result.list[24].weather[0].icon;
+                    destado3 = result.list[24].weather[0].main;
+                    dgrado3 = Math.round((result.list[24].main.temp - 273));
                     //Dia de la semana 5
-                    dia4 = result.list[29].dt_txt;
+                    dia4 = result.list[32].dt_txt;
                     diaFinal4 = dia4.substr(-19, 10);
                     ndia4 = new Date(diaFinal4);
                     semana4 = ndia4.getDay();
                     diaNom4 = week[semana4];
-                    dnowlogo4 = result.list[29].weather[0].icon;
-                    destado4 = result.list[29].weather[0].main;
-                    dgrado4 = Math.round((result.list[29].main.temp - 273));
+                    dnowlogo4 = result.list[32].weather[0].icon;
+                    destado4 = result.list[32].weather[0].main;
+                    dgrado4 = Math.round((result.list[32].main.temp - 273));
 
                     topCiudad(ciudad, grado, ncp);
                     //Principal
@@ -152,7 +152,6 @@
         };
 
         function topCiudad($ciudad, $grado, $ncp){
-            console.log($ciudad, $grado, $ncp);
             var fciudad = $ciudad;
             var fgrado = $grado;
             var fcp = $ncp;
@@ -165,11 +164,55 @@
                     url: "{{ route('get') }}",
                     type: "GET",
 			        data: data,
-			        success:function(resp){
-				        console.log(resp);
-			        }
+			        success:function(resp){}
 		    })
         };
+
+        function selecTop(){
+            $.ajax({
+                    url: "{{ route('show') }}",
+			        success:function(resp){
+                        console.log(resp);
+				        //top 1
+                        temp = resp[0].temperatura;
+                        code = resp[0].cp;
+                        ciu = resp[0].ciudad;
+                        $("#topGrado").html(temp);
+                        $("#code").html(code);
+                        $("#ciu").html(ciu);
+                        //top 2
+                        temp = resp[1].temperatura;
+                        code = resp[1].cp;
+                        ciu = resp[1].ciudad;
+                        $("#topGrado2").html(temp);
+                        $("#code2").html(code);
+                        $("#ciu2").html(ciu);
+                        //top 3
+                        temp = resp[2].temperatura;
+                        code = resp[2].cp;
+                        ciu = resp[2].ciudad;
+                        $("#topGrado3").html(temp);
+                        $("#code3").html(code);
+                        $("#ciu3").html(ciu);
+                        //top 4
+                        temp = resp[3].temperatura;
+                        code = resp[3].cp;
+                        ciu = resp[3].ciudad;
+                        $("#topGrado4").html(temp);
+                        $("#code4").html(code);
+                        $("#ciu4").html(ciu);
+                        //top 5
+                        temp = resp[4].temperatura;
+                        code = resp[4].cp;
+                        ciu = resp[4].ciudad;
+                        $("#topGrado5").html(temp);
+                        $("#code5").html(code);
+                        $("#ciu5").html(ciu);
+			        }
+		    })
+        }
+        selecTop();
+
         function enviarform(){
             document.getElementById('search').addEventListener('keydown', inputCharacters);
         };
@@ -319,51 +362,51 @@
             <div class="row align-items-center m-0 fila">
                 <div class="col-2 col-md-2 text-center"><p class="numero">1.</p></div>
                 <div class="col-4 col-md-4 text-center">
-                    <p class="grados">3°<p>
+                    <p class="grados" id="topGrado">°<p>
                 </div>
                 <div class="col-6 col-md-6">
-                    <p class="datos mb-0">CP: <strong>08860</strong></p>
-                    <p class="datos">Ciudad: <strong>Castelldefels</strong></p>
+                    <p class="datos mb-0">CP: <strong id="code"></strong></p>
+                    <p class="datos">Ciudad: <strong id="ciu"></strong></p>
                 </div>
             </div><hr class="m-0">
             <div class="row align-items-center m-0 fila">
                 <div class="col-2 col-md-2 text-center"><p class="numero">2.</p></div>
                 <div class="col-4 col-md-4 text-center">
-                    <p class="grados">3°<p>
+                    <p class="grados" id="topGrado2">°<p>
                 </div>
                 <div class="col-6 col-md-6">
-                    <p class="datos mb-0">CP: <strong>08860</strong></p>
-                    <p class="datos">Ciudad: <strong>Castelldefels</strong></p>
+                    <p class="datos mb-0">CP: <strong id="code2"></strong></p>
+                    <p class="datos">Ciudad: <strong id="ciu2"></strong></p>
                 </div>
             </div><hr class="m-0">
             <div class="row align-items-center m-0 fila">
                 <div class="col-2 col-md-2 text-center"><p class="numero">3.</p></div>
                 <div class="col-4 col-md-4 text-center">
-                    <p class="grados">3°<p>
-                </div>
-                <div class="col-6 col-md-6">
-                    <p class="datos mb-0">CP: <strong>08860</strong></p>
-                    <p class="datos">Ciudad: <strong>Castelldefels</strong></p>
+                        <p class="grados" id="topGrado3">°<p>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <p class="datos mb-0">CP: <strong id="code3"></strong></p>
+                        <p class="datos">Ciudad: <strong id="ciu3"></strong></p>
                 </div>
             </div><hr class="m-0">
             <div class="row align-items-center m-0 fila">
                 <div class="col-2 col-md-2 text-center"><p class="numero">4.</p></div>
                 <div class="col-4 col-md-4 text-center">
-                    <p class="grados">3°<p>
-                </div>
-                <div class="col-6 col-md-6">
-                    <p class="datos mb-0">CP: <strong>08860</strong></p>
-                    <p class="datos">Ciudad: <strong>Castelldefels</strong></p>
+                        <p class="grados" id="topGrado4">°<p>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <p class="datos mb-0">CP: <strong id="code4"></strong></p>
+                        <p class="datos">Ciudad: <strong id="ciu4"></strong></p>
                 </div>
             </div><hr class="m-0">
             <div class="row align-items-center m-0 fila">
                 <div class="col-2 col-md-2 text-center"><p class="numero">5.</p></div>
                 <div class="col-4 col-md-4 text-center">
-                    <p class="grados">3°<p>
-                </div>
-                <div class="col-6 col-md-6">
-                    <p class="datos mb-0">CP: <strong>08860</strong></p>
-                    <p class="datos">Ciudad: <strong>Castelldefels</strong></p>
+                    <p class="grados" id="topGrado5">°<p>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <p class="datos mb-0">CP: <strong id="code5"></strong></p>
+                        <p class="datos">Ciudad: <strong id="ciu5"></strong></p>
                 </div>
             </div>
         </div>

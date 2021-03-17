@@ -11,7 +11,6 @@ class PrincipalController extends Controller
     public function index(Request $request)
     {
        $cp = $request['cp'];
-       $top = $this->show();
        return view('detalle')->with('cp', $cp);
     }
     public function top(Request $request){
@@ -44,9 +43,9 @@ class PrincipalController extends Controller
     public function show(){
         $top = DB::table('ciudades')
                     ->select('cp', 'ciudad', 'temperatura')
-                    ->orderBy('cp')
+                    ->orderBy('temperatura')
                     ->get();
-        return view('detalle')->with('top', $top);
+        return $top;
     }
 
 }
